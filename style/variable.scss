@@ -1,0 +1,149 @@
+// <*****************[COLOR]*****************>
+$ts-white-color: #ffffff;
+$primary-color: #e62129;
+$red-color: #ca0011;
+$secondary-color: #2b2b2b;
+$dark-color: #1a1713;
+$ts-gray-1: #737373;
+// $ts-gray-2: #888888;
+$ts-gray-2: #676767;
+$ts-gray-3: #f8f8f8;
+$ts-gray-4: #828282;
+$ts-gray-5: #999999;
+$ts-gray-6: #444444;
+$ts-gray-7: #d6d6d6;
+$ts-gray-8: #f9f9f9;
+$ts-gray-9: #cccccc;
+// <*****************[DESC]*****************>
+$ts-desc-01: clamp(10px, 2vw, 22px);
+$ts-desc-02: 21.39px;
+$ts-desc-03: clamp(11px, 2vw, 21px);
+$ts-desc-04: 19.82px;
+$ts-desc-05: 19px;
+$ts-desc-06: clamp(10px, 2vw, 18px);
+$ts-desc-07: clamp(10px, 2vw, 17px);
+$ts-desc-08: clamp(8px, 2vw, 16.53px);
+$ts-desc-09: clamp(12px, 2vw, 16px);
+$ts-desc-10: 15px;
+$ts-desc-11: clamp(8px, 2vw, 14px);
+$ts-desc-12: 12px;
+// <*****************[HEADING]*****************>
+$ts-heading-01: clamp(31px, 5vw, 71px);
+$ts-heading-02: clamp(31px, 4vw, 68px);
+$ts-heading-03: 67px;
+$ts-heading-04: clamp(25px, 4vw, 62.99px);
+$ts-heading-05: clamp(35px, 4vw, 60px);
+$ts-heading-06: clamp(39px, 4vw, 48px);
+$ts-heading-07: clamp(22px, 3vw, 38px);
+$ts-heading-08: 27px;
+$ts-heading-09: 26px;
+$ts-heading-10: clamp(12px, 2vw, 23px);
+// <*****************[BREAKPOINT]*****************>
+$screen-sm-up: 576px;
+$screen-sm-down: 575px;
+// Small tablets (portrait view)
+$screen-md-up: 768px;
+$screen-md-down: 767px;
+// Tablets and small desktops
+$screen-lg-up: 992px;
+$screen-lg-down: 991px;
+// Large tablets and desktops
+$screen-xl-up: 1200px;
+$screen-xl-down: 1199px;
+// Extra Large and desktops
+$screen-xxl-up: 1400px;
+$screen-xxl-down: 1399px;
+// Small devices
+@mixin sm-up {
+  @media (min-width: #{$screen-sm-up}) {
+    @content;
+  }
+}
+
+@mixin sm-down {
+  @media (max-width: #{$screen-sm-down}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md-up {
+  @media (min-width: #{$screen-md-up}) {
+    @content;
+  }
+}
+
+@mixin md-down {
+  @media (max-width: #{$screen-md-down}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg-up {
+  @media (min-width: #{$screen-lg-up}) {
+    @content;
+  }
+}
+
+@mixin lg-down {
+  @media (max-width: #{$screen-lg-down}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl-up {
+  @media (min-width: #{$screen-xl-up}) {
+    @content;
+  }
+}
+
+@mixin xl-down {
+  @media (max-width: #{$screen-xl-down}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xxl-up {
+  @media (min-width: #{$screen-xxl-up}) {
+    @content;
+  }
+}
+
+@mixin xxl-down {
+  @media (max-width: #{$screen-xxl-down}) {
+    @content;
+  }
+}
+
+// @font-face {
+//   font-family: "FilsonPro";
+//   font-weight: 800;
+//   font-style: normal;
+//   src: url("../assets/Font/2/FilsonProBook.otf") format("truetype");
+// }
+
+// @font-face {
+//   font-family: "FilsonPro";
+//   font-weight: 900;
+//   font-style: normal;
+//   src: url("../assets/Font/2/FilsonProHeavy.otf") format("truetype");
+// }
+
+// @font-face {
+//   font-family: "FilsonPro";
+//   font-weight: 300;
+//   font-style: normal;
+//   src: url("../assets/Font/2/FilsonProLight.otf") format("truetype");
+// }
+
+// @font-face {
+//   font-family: "FilsonPro";
+//   font-weight: 500;
+//   font-style: normal;
+//   src: url("../assets/Font/2/FilsonProMedium.otf") format("truetype");
+// }
+
+// $ts-font-FilsonPro: "msyh", "arial", sans-serif;

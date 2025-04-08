@@ -1,0 +1,39 @@
+@import "./variable";
+// <*****************[HERO SEC]*****************>
+
+.ts-news-container {
+  width: 100%;
+  height: 400px;
+  .ts-heading {
+    color: $ts-white-color;
+    font-size: 8vw;
+    opacity: 30%;
+  }
+}
+
+.ts-news {
+  .card {
+    border: none;
+    .card-body {
+      padding: 0 20px;
+      @include md-down {
+        padding: 0;
+      }
+    }
+    .card-title {
+      padding-bottom: clamp(20px, 3vw, 45px);
+    }
+    .card-text {
+      font-weight: lighter;
+    }
+    .card-img {
+      max-width: 100%;
+      height: 175px;
+      object-fit: cover;
+      // margin-bottom: 15px;
+    }
+  }
+  .ts-border {
+    border-top: 2px solid #023ea7;
+  }
+}
