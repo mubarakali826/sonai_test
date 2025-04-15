@@ -1,4 +1,4 @@
-<div>
+<div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <p class="h2 text-center ">新增产品</p>
     <form action="./controller/productMan/product_new_save.php" method="POST" enctype="multipart/form-data">
         <div class="mb-3">

@@ -1,6 +1,16 @@
 <?php
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/config.php')) {
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+} else {
+    require_once __DIR__ . '/../../config.php';
+}
+
 $admin_path = $_SERVER['DOCUMENT_ROOT'] . "/admin";
-include __DIR__ . '../../controller/conn.php';
+ if ($isProduction) {
+        include $admin_path . "/controller/conn.php";
+    } else {
+        include __DIR__ . "/../../controller/conn.php";
+    }
 /**
  * 验证登录的密码账号
  * 

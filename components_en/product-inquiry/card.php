@@ -12,7 +12,7 @@
         <div class="d-flex align-items-center justify-content-center">
             <h6 class="fw-bold ts-text-primary">
                 <img width="18" src="./assets/icons/search-red.svg" alt="...">
-                Ver todas las aplicaciones
+                See all applications
             </h6>
         </div>
     </div>

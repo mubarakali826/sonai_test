@@ -1,10 +1,10 @@
 <?php
-// Set upload paths
-$SImgPath = __DIR__ . '/../../../upProSimg/';
-$BImgPath = __DIR__ . '/../../../upProBimg/';
+$admin_path = $_SERVER['DOCUMENT_ROOT'] . "/admin";
+$SImgPath = $_SERVER['DOCUMENT_ROOT'] . '/upProSimg/';
+$BImgPath = $_SERVER['DOCUMENT_ROOT'] . '/upProBimg/';
+include_once $admin_path . '/controller/conn.php';
 
-// Include DB connection
-include_once __DIR__ . "/../../controller/conn.php";
+// 后台处理数据4步骤
 
 try {
     $pdo->beginTransaction();
@@ -13,7 +13,7 @@ try {
     $product_code = $_POST['product_code'] ?? '';
     $product_id = $_POST['product_id'] ?? '';
     $main_order_number = $_POST['order_number'] ?? '';
-    echo $main_order_number;
+    // echo $main_order_number;
    
 
     $sonai_ceramic = $_POST['sonai_ceramic'] ?? '';

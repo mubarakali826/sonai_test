@@ -1,4 +1,4 @@
-<div>
+<div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <p class="h2 text-center">新增用户</p>
     <form action="./controller/userMan/user_new_save.php" method="POST">
         <div class="mb-3">

@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$componentsPath =  "./components" . $checkLang;
+$componentsPath =  "./components_en";
 
 $cssLinkFiles = '
     <link rel="stylesheet" href="./thirdparty/swiper/style.css" />

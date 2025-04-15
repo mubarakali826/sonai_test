@@ -1,7 +1,12 @@
 <?php
 include "lang.php";
-// $componentsPath = $_SERVER['DOCUMENT_ROOT'] . "./components" . $checkLang;
-$componentsPath = "./components" . $checkLang;
+require_once 'config.php';
+
+if ($isProduction) {
+    $componentsPath = $_SERVER['DOCUMENT_ROOT'] . "/components_en";
+} else {
+    $componentsPath = "./components_en";
+}
 
 $cssLinkFiles = '
     <link rel="stylesheet" href="./thirdparty/swiper/style.css" />

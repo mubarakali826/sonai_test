@@ -1,8 +1,25 @@
 <?php
-$admin_path = $_SERVER['DOCUMENT_ROOT'] . "/admin";
-$SImgPath = $_SERVER['DOCUMENT_ROOT'] . '/upProSimg/';
-$BImgPath = $_SERVER['DOCUMENT_ROOT'] . '/upProBimg/';
-include_once $admin_path . '/controller/conn.php';
+
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/config.php')) {
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+} else {
+    require_once __DIR__ . '/../../../config.php'; // Corrected to 3 levels up
+}
+
+
+// Set admin path based on environment
+if ($isProduction) {
+    $admin_path = $_SERVER['DOCUMENT_ROOT'] . "/admin";
+    $SImgPath = $_SERVER['DOCUMENT_ROOT'] . '/upProSimg/';
+    $BImgPath = $_SERVER['DOCUMENT_ROOT'] . '/upProBimg/';
+    include_once $admin_path . '/controller/conn.php';
+} else {
+    $admin_path = __DIR__ . '/../../../';
+    $SImgPath = __DIR__ . '/../../../upProSimg/';
+    $BImgPath = __DIR__ . '/../../../upProBimg/';
+    include_once $admin_path . 'controller/conn.php';
+}
+
 
 // 后台处理数据4步骤
 
@@ -31,7 +48,7 @@ $rows = $rs->fetch(PDO::FETCH_ASSOC);
 $int = intval($rows['Max(`id`)']) + 1;
 
 if ($Simg['name']) {
-    $ext = strrchr($Simg['name'], '.'); // 截取最后一个点以及后面的内容，得到文件扩展名
+    $ext = strrchr($Simg['name'], '.');
     $filename = time() . 'product_' . 's_0' . $int . $ext;
     if (!move_uploaded_file($Simg['tmp_name'], $SImgPath . $filename)) {
         echo 'fail: 小图上传失败';
@@ -42,7 +59,7 @@ if ($Simg['name']) {
 }
 
 if ($Bimg['name']) {
-    $Bext = strrchr($Bimg['name'], '.'); // 截取最后一个点以及后面的内容，得到文件扩展名
+    $Bext = strrchr($Bimg['name'], '.');
     $Bfilename = time() . 'product_' . 'b_0' . $int . $Bext;
     if (!move_uploaded_file($Bimg['tmp_name'], $BImgPath . $Bfilename)) {
         echo 'fail: 大图上传失败';
@@ -52,7 +69,7 @@ if ($Bimg['name']) {
     $Bfilename = '';
 }
 
-// 3 第三步： 构造SQL语句，将数据写入数据表
+// 3 构造SQL语句
 $sql = "INSERT INTO `product`(`productname`, `productname_en`, `cate_id`, `Simg`, `Bimg`) VALUES(:productname, :productname_en, :cate_id, :Simg, :Bimg)";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':productname', $productname);
@@ -61,7 +78,7 @@ $stmt->bindParam(':cate_id', $cate_id);
 $stmt->bindParam(':Simg', $filename);
 $stmt->bindParam(':Bimg', $Bfilename);
 
-// Print the SQL statement and bound parameters for debugging
+// Debug
 echo 'Bound Parameters: <br/>';
 echo 'productname: ' . $productname . '<br/>';
 echo 'productname_en: ' . $productname_en . '<br/>';
@@ -69,9 +86,7 @@ echo 'cate_id: ' . $cate_id . '<br/>';
 echo 'Simg: ' . $filename . '<br/>';
 echo 'Bimg: ' . $Bfilename . '<br/>';
 
-// 4. 第四步：将执行结果显示出来
-echo '<br/>';
-echo 'Result <br/>';
+echo '<br/>Result <br/>';
 if ($stmt->execute()) {
     echo 'success: 新增成功！';
     header('Location: ../../product_list.php');

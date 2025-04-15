@@ -1,5 +1,5 @@
 <?php include "lang.php";
-$componentsPath = $_SERVER['DOCUMENT_ROOT'] . "/components" . $checkLang;
+$componentsPath = "./components_en";
 $cssLinkFiles = '';
 include_once $componentsPath . "/global/head.php" ?>
 <?php $currentPage = "about-us";

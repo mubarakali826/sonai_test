@@ -1,4 +1,4 @@
-<div class="table-responsive mb-3">
+<div class="table-responsive mb-3 col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <table class="table table-striped table-sm caption-top table-bordered">
         <caption class="table-caption text-center mb-3 mt-2 fs-3">Contact Form Submissions</caption>
         <thead>

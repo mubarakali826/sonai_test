@@ -5,7 +5,7 @@ $prev < 1 ? $prev = 1 : $prev;
 <div aria-label="Page navigation" class="mb-3">
     <ul class="pagination float-end">
         <li class="page-item">
-            <a class="page-link text-dark" href="./product_list.php?page=<?php echo $prev; ?>" aria-label="Previous">
+            <a class="page-link text-dark" href="./product_inquiry_list.php?page=<?php echo $prev; ?>" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
@@ -17,7 +17,7 @@ $prev < 1 ? $prev = 1 : $prev;
             if ($curPage == $i) {
                 echo '<li class="page-item active"><a class="page-link text-dark" href="#">' . $i . '</a></li>';
             } else {
-                echo '<li class="page-item"><a class="page-link text-dark" href="./product_list.php?page=' . $i . '">' . $i . '</a></li>';
+                echo '<li class="page-item"><a class="page-link text-dark" href="./product_inquiry_list.php?page=' . $i . '">' . $i . '</a></li>';
             }
             ;
         }
@@ -27,7 +27,7 @@ $prev < 1 ? $prev = 1 : $prev;
             <?php $next = $curPage + 1;
             $next > $pageCount ? $next = $pageCount : $next;
             ?>
-            <a class="page-link text-dark" href="./product_list.php?page=<?php echo $next; ?>" aria-label="Next">
+            <a class="page-link text-dark" href="./product_inquiry_list.php?page=<?php echo $next; ?>" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
             </a>
         </li>

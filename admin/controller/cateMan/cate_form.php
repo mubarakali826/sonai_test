@@ -1,4 +1,4 @@
-<div>
+<div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <h2 class="h2 text-center ">添加分类</h2>
     <form action="./controller/cateMan/cate_new_save.php" method="POST">
         <div class="mb-3">

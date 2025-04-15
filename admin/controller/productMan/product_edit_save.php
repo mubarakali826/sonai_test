@@ -1,8 +1,22 @@
 <?php
-$admin_path = $_SERVER['DOCUMENT_ROOT'] . "/admin";
-$SImgPath = $_SERVER['DOCUMENT_ROOT'] . '/upProSimg/';
-$BImgPath = $_SERVER['DOCUMENT_ROOT'] . '/upProBimg/';
-include_once $admin_path . '/controller/conn.php';
+// Load config.php
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/config.php')) {
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+} else {
+    require_once __DIR__ . '/../../../config.php';
+}
+
+if ($isProduction) {
+    $admin_path = $_SERVER['DOCUMENT_ROOT'] . "/admin";
+    $SImgPath = $_SERVER['DOCUMENT_ROOT'] . '/upProSimg/';
+    $BImgPath = $_SERVER['DOCUMENT_ROOT'] . '/upProBimg/';
+    include_once $admin_path . '/controller/conn.php';
+} else {
+    $admin_path = __DIR__ . '/../../../';
+    $SImgPath = __DIR__ . '/../../../upProSimg/';
+    $BImgPath = __DIR__ . '/../../../upProBimg/';
+    include_once $admin_path . 'controller/conn.php';
+}
 
 // 后台处理数据4步骤
 
@@ -16,7 +30,7 @@ $Bimg = $_FILES['Bimg'];
 
 // 处理小图上传
 if ($Simg['name']) {
-    $ext = strrchr($Simg['name'], '.'); // 截取最后一个点以及后面的内容，得到文件扩展名
+    $ext = strrchr($Simg['name'], '.');
     $filename = time() . 'product_' . 's_0' . $id . $ext;
     if (!move_uploaded_file($Simg['tmp_name'], $SImgPath . $filename)) {
         echo 'fail: 小图上传失败';
@@ -32,7 +46,7 @@ if ($Simg['name']) {
 
 // 处理大图上传
 if ($Bimg['name']) {
-    $Bext = strrchr($Bimg['name'], '.'); // 截取最后一个点以及后面的内容，得到文件扩展名
+    $Bext = strrchr($Bimg['name'], '.');
     $Bfilename = time() . 'product_' . 'b_0' . $id . $Bext;
     if (!move_uploaded_file($Bimg['tmp_name'], $BImgPath . $Bfilename)) {
         echo 'fail: 大图上传失败';
@@ -56,7 +70,7 @@ $stmt->bindParam(':Simg', $filename);
 $stmt->bindParam(':Bimg', $Bfilename);
 $stmt->bindParam(':id', $id);
 
-// Print the SQL statement and bound parameters for debugging
+// Debug
 echo 'Bound Parameters: <br/>';
 echo 'productname: ' . $productname . '<br/>';
 echo 'productname_en: ' . $productname_en . '<br/>';
@@ -65,8 +79,7 @@ echo 'Simg: ' . $filename . '<br/>';
 echo 'Bimg: ' . $Bfilename . '<br/>';
 
 // 4. 第四步：将执行结果显示出来
-echo '<br/>';
-echo 'Result <br/>';
+echo '<br/>Result <br/>';
 if ($stmt->execute()) {
     echo 'success: 修改成功！';
     header('Location: ../../product_list.php');

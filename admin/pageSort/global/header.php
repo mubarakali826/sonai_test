@@ -1,6 +1,18 @@
 <?php
 include "./helpers/variable.php";
-include   __DIR__ . "/../../controller/conn.php";
+// include   __DIR__ . "/../../../controller/conn.php";
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/config.php')) {
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+} else {
+    require_once __DIR__ . '/../../../config.php';
+}
+
+if ($isProduction) {
+    include $_SERVER['DOCUMENT_ROOT'] . "/admin" . '/controller/conn.php';
+} else {
+    include __DIR__ . "/../../../controller/conn.php";
+}
+
 session_start();
 if (!isset($_SESSION['userid'])) {
     alert('请登录后再操作！', 'login.php');
